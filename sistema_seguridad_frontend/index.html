@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Seguridad - Monitor</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Panel de Configuración -->
+        <div class="config-panel">
+            <h3>⚙️ Configuración de Conexión</h3>
+            <div class="config-form">
+                <div class="form-group">
+                    <label for="raspberry-ip">IP de la Raspberry Pi:</label>
+                    <input type="text" id="raspberry-ip" placeholder="192.168.1.50" value="192.168.1.50">
+                </div>
+                <div class="form-group">
+                    <label for="puerto">Puerto:</label>
+                    <input type="text" id="puerto" placeholder="5000" value="5000">
+                </div>
+                <button class="btn btn-primary" onclick="guardarConfiguracion()">💾 Guardar</button>
+                <button class="btn btn-test" onclick="probarConexion()">🔌 Probar Conexión</button>
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>🔒 Sistema de Seguridad y Control de Acceso</h1>
+            <span class="status-badge" id="status-badge">● Conectando...</span>
+            <div style="margin-top: 15px; color: #666;">
+                <span id="tiempo-funcionamiento">0h 0m</span> de funcionamiento
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">👥</span>
+                    Personas Dentro
+                </div>
+                <div class="card-value pulse" id="contador">0</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">✅</span>
+                    Total Entradas
+                </div>
+                <div class="card-value" id="total-entradas" style="color: #10b981;">0</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">❌</span>
+                    Total Salidas
+                </div>
+                <div class="card-value" id="total-salidas" style="color: #ef4444;">0</div>
+            </div>
+        </div>
+
+        <div class="eventos-container">
+            <div class="eventos-header">
+                <h2>📋 Registro de Eventos</h2>
+                <button class="btn btn-reset" onclick="resetearSistema()">
+                    🔄 Resetear Contador
+                </button>
+            </div>
+            <div id="eventos-lista">
+                <div class="loading pulse">Cargando eventos...</div>
+            </div>
+        </div>
+
+        <div class="timestamp" id="ultima-actualizacion">
+            Última actualización: --:--:--
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
